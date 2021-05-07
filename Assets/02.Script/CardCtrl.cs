@@ -11,7 +11,6 @@ public class CardCtrl : MonoBehaviour
 
     public GameObject FairyEffect;
 
-    private Transform CardTr;
 
 
 
@@ -36,12 +35,16 @@ public class CardCtrl : MonoBehaviour
 
 
 
-    void OnCollisionEnter(Collision coll)
+
+
+
+    void OnTriggerEnter(Collider coll)
     {
-        if ( coll.collider.CompareTag("CARD"))
+
+        if ( coll.CompareTag("CARD"))
         {
-            Debug.Log("coll");
-            Instantiate(FairyEffect, CardTr.position, CardTr.rotation);
+            GameObject obj = Instantiate(FairyEffect, this.transform.position, this.transform.rotation);
+            Destroy(obj, 3.0f);
         }
     }
 
