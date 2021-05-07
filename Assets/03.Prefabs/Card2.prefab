@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1201891143370937220}
   - component: {fileID: 1201891143370937216}
   - component: {fileID: 4423990848452698607}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Card2
   m_TagString: CARD
   m_Icon: {fileID: 0}
@@ -110,8 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb063491d07ca30459a312defaebf962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FairyEffect: {fileID: 5371933374512117793, guid: d77173feeb87eea48a4cf45b896b0f16, type: 3}
-  CardTr: {fileID: 0}
+  BexplEffect: {fileID: 6160890045270536338, guid: 06426e990602ff842a0b00deaae020de, type: 3}
 --- !u!54 &4423990848452698607
 Rigidbody:
   m_ObjectHideFlags: 0

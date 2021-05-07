@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9067576123192766558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CardTr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7825229425363800263}
   - component: {fileID: 7825229425363800259}
   - component: {fileID: -8677468777071263527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Card
   m_TagString: CARD
   m_Icon: {fileID: 0}
@@ -141,8 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb063491d07ca30459a312defaebf962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FairyEffect: {fileID: 5371933374512117793, guid: d77173feeb87eea48a4cf45b896b0f16, type: 3}
-  CardTr: {fileID: 9067576123192766558}
+  BexplEffect: {fileID: 6160890045270536338, guid: 06426e990602ff842a0b00deaae020de, type: 3}
 --- !u!54 &-8677468777071263527
 Rigidbody:
   m_ObjectHideFlags: 0

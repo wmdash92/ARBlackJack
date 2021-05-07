@@ -9,7 +9,7 @@ public class CardCtrl : MonoBehaviour
 {
 
 
-    public GameObject FairyEffect;
+    public GameObject BexplEffect;
 
 
 
@@ -43,7 +43,7 @@ public class CardCtrl : MonoBehaviour
 
         if ( coll.CompareTag("CARD"))
         {
-            GameObject obj = Instantiate(FairyEffect, this.transform.position, this.transform.rotation);
+            GameObject obj = Instantiate(BexplEffect, this.transform.position, this.transform.rotation);
             Destroy(obj, 3.0f);
         }
     }
