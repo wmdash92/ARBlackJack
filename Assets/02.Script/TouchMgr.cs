@@ -16,12 +16,25 @@ public class TouchMgr : MonoBehaviour
 
     public GameObject Close;
     public GameObject OpenSpade;
+    public GameObject Back;
+    public GameObject Spade02D;
+    
+
+
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         
+
+        // GameObject Spade02C = GameObject.FindGameObjectWithTag("CARD");
+
+
+
+
+
     }
 
 
@@ -60,13 +73,29 @@ public class TouchMgr : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-            Debug.Log("touch");
             
             Close.SetActive(false);
             OpenSpade.SetActive(true);
             }
 
         }
+
+
+        if(Physics.Raycast(ray, out hit, 10.0f, 1<<8))
+        {
+
+            if (Input.GetMouseButtonDown(0))
+            {
+            
+            GameObject Spade02D = GameObject.Find("Spade02");
+            Spade02D.SetActive(false);
+
+            }
+
+        }
+
+
+
 
 
 
