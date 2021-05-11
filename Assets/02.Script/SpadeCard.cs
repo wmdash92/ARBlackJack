@@ -19,7 +19,6 @@ public class SpadeCard : MonoBehaviour
 
     public GameObject FairyEffect;
 
-
     public GameObject Card;
 
 
@@ -46,7 +45,7 @@ public class SpadeCard : MonoBehaviour
 
 
 
-        if(Physics.Raycast(ray, out hit, 10.0f, 1<<6))
+        if(Physics.Raycast(ray, out hit, 10.0f, 1<<7))
         {
             Debug.Log("hello");
 
@@ -54,19 +53,24 @@ public class SpadeCard : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-
             Debug.Log("touch");
             
             Card.SetActive(false);
 
-
-            }
-
-
         }
+
+
+    }
+
+
+
+
 
 
 
 
     }
+
+
+
 }

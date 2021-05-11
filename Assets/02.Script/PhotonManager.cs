@@ -39,7 +39,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.GameVersion = gameVersion;
         
-
         PhotonNetwork.ConnectUsingSettings();
 
 
@@ -63,7 +62,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("서버 접속!!");
-
         PhotonNetwork.JoinLobby();
 
     }
@@ -127,7 +125,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
 
         PhotonNetwork.CreateRoom(roomNameText.text);
-
         PhotonNetwork.JoinRandomRoom();
 
     }

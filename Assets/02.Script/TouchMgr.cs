@@ -20,6 +20,16 @@ public class TouchMgr : MonoBehaviour
 
 
 
+//---------------------------------
+
+    public int Player1Point;
+    public int Player2Point;
+    public int Player3Point;
+    public int Player4Point;
+
+
+
+
 
 
 
@@ -55,11 +65,10 @@ public class TouchMgr : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log("touch");
-                GameObject obj = Instantiate(FairyEffect, Spade02Tr.transform.position, Spade02Tr.transform.rotation);
-                Destroy(obj, 3.0f);
-
-        }
+            Debug.Log("touch");
+            GameObject obj = Instantiate(FairyEffect, Spade02Tr.transform.position, Spade02Tr.transform.rotation);
+            Destroy(obj, 3.0f);
+            }
 
 
         }
@@ -100,10 +109,10 @@ public class TouchMgr : MonoBehaviour
                 {
                     if (card.gameObject.name == "Spade02")
                     {
-                        card.gameObject.SetActive(true);
-                        GameObject obj = Instantiate(PlasEffect, Spade02Tr.transform.position, Spade02Tr.transform.rotation);
-                        Destroy(obj, 5.0f);
-                        break;
+                    card.gameObject.SetActive(true);
+                    GameObject FaEffect = Instantiate(FairyEffect, Spade02Tr.transform.position, Spade02Tr.transform.rotation);
+                    Destroy(FaEffect, 5.0f);
+                    break;
                     }
                 }
 
@@ -125,7 +134,7 @@ public class TouchMgr : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-
+            
                 GameObject BackColor_Black_Spade03 = GameObject.Find("BackColor_Black_Spade03");
                 BackColor_Black_Spade03.SetActive(false);
 
@@ -137,8 +146,15 @@ public class TouchMgr : MonoBehaviour
                     if (card.gameObject.name == "Spade03")
                     {
                         card.gameObject.SetActive(true);
-                        GameObject effect = Instantiate(FairyEffect, Spade03Tr.transform.position, Spade03Tr.transform.rotation);
-                        Destroy(effect, 5.0f);
+                        GameObject FaEffect = Instantiate(FairyEffect, Spade03Tr.transform.position, Spade03Tr.transform.rotation);
+                        GameObject PlEffect = Instantiate(PlasEffect, Spade03Tr.transform.position, Spade03Tr.transform.rotation);
+                        Destroy(FaEffect, 5.0f);
+                        Destroy(PlEffect, 0.6f);
+
+                        Player1Point += 3;
+
+                        Debug.Log(Player1Point);
+
                         break;
                     }
                 }
@@ -165,11 +181,20 @@ public class TouchMgr : MonoBehaviour
                     if (card.gameObject.name == "Spade04")
                     {
                         card.gameObject.SetActive(true);
-                        GameObject effect = Instantiate(FairyEffect, Spade04Tr.transform.position, Spade04Tr.transform.rotation);
-                        Destroy(effect, 5.0f);
+
+                        GameObject FaEffect = Instantiate(FairyEffect, Spade04Tr.transform.position, Spade04Tr.transform.rotation);
+                        GameObject PlEffect = Instantiate(PlasEffect, Spade04Tr.transform.position, Spade04Tr.transform.rotation);
+                        Destroy(FaEffect, 5.0f);
+                        Destroy(PlEffect, 0.6f);
+
+
+                        Player1Point += 4;
+                        Debug.Log(Player1Point);
+
                         break;
                     }
                 }
+
 
             }
         }
