@@ -8,6 +8,7 @@ public class EffectManager : MonoBehaviour
 
 
 
+
     public GameObject FairyEffect;
     public GameObject PlasEffect;
 
@@ -31,13 +32,13 @@ public class EffectManager : MonoBehaviour
 
 
 
-    public void Effect()
-    {
-        GameObject FaEffect = Instantiate(FairyEffect, this.transform.position, this.transform.rotation);
-        GameObject PlEffect = Instantiate(PlasEffect, this.transform.position, this.transform.rotation);
-        Destroy(FaEffect, 5.0f);
-        Destroy(PlEffect, 0.6f);
-    }
+    // public void Effect()
+    // {
+    //     GameObject FaEffect = Instantiate(FairyEffect, this.transform.position, this.transform.rotation);
+    //     GameObject PlEffect = Instantiate(PlasEffect, this.transform.position, this.transform.rotation);
+    //     Destroy(FaEffect, 5.0f);
+    //     Destroy(PlEffect, 0.6f);
+    // }
 
 
 }

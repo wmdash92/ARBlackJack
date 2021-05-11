@@ -1,8 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class TouchMgr : MonoBehaviour
+
+
+
+public class TouchMgr : MonoBehaviourPunCallbacks
 {
 
 
@@ -13,19 +19,35 @@ public class TouchMgr : MonoBehaviour
     public GameObject FairyEffect;
     public GameObject PlasEffect;
 
+    public Hashtable ht = new Hashtable();
+    private PhotonView pv;
+
+
+
+#region SpadeCardTr
+//--------------------------------
+
+
+    public Transform[] spades;
+    
+    public Transform Spade01Tr;
     public Transform Spade02Tr;
     public Transform Spade03Tr;
     public Transform Spade04Tr;
+    public Transform Spade05Tr;
+    public Transform Spade06Tr;
+    public Transform Spade07Tr;
+    public Transform Spade08Tr;
+    public Transform Spade09Tr;
+    public Transform Spade10Tr;
 
 
 
+#endregion
 
-//---------------------------------
+//----------------------------------------
 
-    public int Player1Point;
-    public int Player2Point;
-    public int Player3Point;
-    public int Player4Point;
+    public int PlayerPoint;
 
 
 
@@ -37,17 +59,35 @@ public class TouchMgr : MonoBehaviour
     void Start()
     {
 
+    PhotonNetwork.SetPlayerCustomProperties(ht);
+
+
+    ht.Add($"Player1 {0}번째 카드",$"Drow {0}");
+
+
+    ht.Add($"Player2 {0}번째 카드",$"Drow {0}");
+    ht.Add($"Player3 {0}번째 카드",$"Drow {0}");
+    ht.Add($"Player4 {0}번째 카드",$"Drow {0}");
+
+
+
+
 
         // GameObject Spade02C = GameObject.FindGameObjectWithTag("CARD");
 
 
-
+        // EffectManager a = new EffectManager();
+        // a.Effect();
 
 
     }
 
 
-
+    void UpdateCusv()
+    {
+        ht.Add("score", PlayerPoint);
+        // PhotonNetwork
+    }
 
 
     void Update()
@@ -57,6 +97,8 @@ public class TouchMgr : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 10.0f, Color.green);
 
 
+
+    #region SpadeCardCtrl
 
         if (Physics.Raycast(ray, out hit, 10.0f, 1 << 6))
         {
@@ -151,9 +193,9 @@ public class TouchMgr : MonoBehaviour
                         Destroy(FaEffect, 5.0f);
                         Destroy(PlEffect, 0.6f);
 
-                        Player1Point += 3;
+                        PlayerPoint += 3;
 
-                        Debug.Log(Player1Point);
+                        Debug.Log(PlayerPoint);
 
                         break;
                     }
@@ -188,8 +230,9 @@ public class TouchMgr : MonoBehaviour
                         Destroy(PlEffect, 0.6f);
 
 
-                        Player1Point += 4;
-                        Debug.Log(Player1Point);
+
+                        PlayerPoint += 4;
+                        Debug.Log(PlayerPoint);
 
                         break;
                     }
@@ -201,14 +244,86 @@ public class TouchMgr : MonoBehaviour
 
 
 
+        if (Physics.Raycast(ray, out hit, 10.0f, 1 << 11))
+        {
+
+            if (Input.GetMouseButtonDown(0))
+            {
+
+                GameObject BackColor_Black_Spade05 = GameObject.Find("BackColor_Black_Spade05");
+                BackColor_Black_Spade05.SetActive(false);
+
+
+                GameObject Spade05 = GameObject.Find("Sun_Spade05");
+                var cards = Spade05.GetComponentsInChildren<Transform>(true);
+                foreach (var card in cards)
+                {
+                    if (card.gameObject.name == "Spade05")
+                    {
+                        card.gameObject.SetActive(true);
+
+                        GameObject FaEffect = Instantiate(FairyEffect, Spade05Tr.transform.position, Spade05Tr.transform.rotation);
+                        GameObject PlEffect = Instantiate(PlasEffect, Spade05Tr.transform.position, Spade05Tr.transform.rotation);
+                        Destroy(FaEffect, 5.0f);
+                        Destroy(PlEffect, 0.6f);
+
+
+
+                        PlayerPoint += 5;
+                        Debug.Log(PlayerPoint);
+
+
+
+                    
+                    
+
+
+                        break;
+                    }
+                }
+
+
+            }
+        }
+
+#endregion
 
 
 
 
+    
 
 
 
 
     }
 
+
+
+
+
+//     public override void OnPlayerPropertiesUpdate(Photon.Realtime.Player targetPlayer,
+//                                                 ExitGames.Client.Photon.Hashtable changedProps)
+//         {
+//             Debug.Log("");
+
+//             Debug.Log($"target = {targetPlayer}, change = {changedProps}");
+
+
+
+//                     if ( pv.Owner == targetPlayer )
+//                     {
+//                         // Instantiate<GameObject>(character, tr);
+//                     }
+
+//         }
+
+
+// // 커런트 룸 플레이어 배열, 커스텀 프로퍼티, 포인트값만, foreach
+// // PhotonNetwork.CurrentRoom.Player
+
+
+
 }
+
+
