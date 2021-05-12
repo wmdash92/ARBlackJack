@@ -1147,7 +1147,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 853477259}
         m_TargetAssemblyTypeName: PhotonManager, Assembly-CSharp
-        m_MethodName: OnJoinedRoom
+        m_MethodName: OnLoginClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

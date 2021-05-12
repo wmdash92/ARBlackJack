@@ -108,11 +108,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("방 접속!!");
-        // Debug.Log(PhotonNetwork.CurrentRoom.Name);
 
 
-        // if(PhotonNetwork.IsMasterClient)
-        // {
 
         PhotonNetwork.LoadLevel("PlayScene");
         // }
@@ -125,7 +122,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
 
         PhotonNetwork.CreateRoom(roomNameText.text);
+
         PhotonNetwork.JoinRandomRoom();
+        Debug.Log("랜덤룸 접속");
 
     }
 

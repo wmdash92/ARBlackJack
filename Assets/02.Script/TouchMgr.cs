@@ -81,11 +81,6 @@ public class TouchMgr : MonoBehaviourPunCallbacks
     }
 
 
-    void UpdateCusv()
-    {
-        ht.Add("score", PlayerPoint);
-        // PhotonNetwork
-    }
 
 
     void Update()
@@ -192,8 +187,7 @@ public class TouchMgr : MonoBehaviourPunCallbacks
                         Destroy(PlEffect, 0.6f);
 
                         PlayerPoint += 3;
-
-                        Debug.Log(PlayerPoint);
+                        OnCardOpen();
 
                         break;
                     }
@@ -228,9 +222,9 @@ public class TouchMgr : MonoBehaviourPunCallbacks
                         Destroy(PlEffect, 0.6f);
 
 
-
                         PlayerPoint += 4;
-                        Debug.Log(PlayerPoint);
+                        OnCardOpen();
+
 
                         break;
                     }
@@ -270,8 +264,6 @@ public class TouchMgr : MonoBehaviourPunCallbacks
                         PlayerPoint += 5;
                         OnCardOpen();
 
-
-
                     
                     
 
@@ -290,8 +282,6 @@ public class TouchMgr : MonoBehaviourPunCallbacks
 
 
 
-
-
     }
 
 
@@ -299,10 +289,11 @@ public class TouchMgr : MonoBehaviourPunCallbacks
     public void OnCardOpen()
     {
 
+    
+
         ht.Add("Score",(int)PlayerPoint);
         PhotonNetwork.SetPlayerCustomProperties(ht);
         Debug.Log($"{ht["Score"]}");
-
     }
 
 

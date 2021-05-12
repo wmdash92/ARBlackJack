@@ -14,7 +14,9 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class GameManager : MonoBehaviourPunCallbacks
 {
 
+    
 
+    public Hashtable ht = new Hashtable();
 
 
 
@@ -40,23 +42,33 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
     private Dictionary <int, Player> roomPlayers = new Dictionary<int, Player>();
+
+
+
+
     public void CardCount()
     {
 
 
-            
-
-            // roomPlayers = PhotonNetwork.CurrentRoom.Players;
-            // foreach(var CurrentPlayer in roomPlayers)
-            // {
-                
 
 
+        Debug.Log($"current player is = {PhotonNetwork.CountOfPlayers}");
 
-            // }
-    
+        Debug.Log($"now room player is = {PhotonNetwork.PlayerList.Count()}");
+
+
+
+        
+
+
+        Debug.Log($"player  {PhotonNetwork.CurrentRoom.Players.Values} hello s");
+
+
 
         List<Player> playerList = PhotonNetwork.CurrentRoom.Players.Values.ToList<Player>();
+        Debug.Log($"hello {playerList}");
+
+
         
 
         int maxScore = -1;
@@ -72,8 +84,9 @@ public class GameManager : MonoBehaviourPunCallbacks
                 winPlayer = player;
             }
         }
+        
 
-        Debug.Log($"{roomPlayers}");
+            Debug.Log($"win {winPlayer}");
 
     }
 
@@ -81,6 +94,16 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
+
+    public override void OnPlayerPropertiesUpdate(Photon.Realtime.Player targetPlayer,
+                                                ExitGames.Client.Photon.Hashtable changedProps)
+        {
+            Debug.Log("hello");
+
+            Debug.Log($"target = {targetPlayer}, change = {changedProps}");
+
+
+        }
 
 
 }
