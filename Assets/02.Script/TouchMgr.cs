@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Photon.Pun;
 using Photon.Realtime;
 
 
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 
 public class TouchMgr : MonoBehaviourPunCallbacks
@@ -59,15 +59,13 @@ public class TouchMgr : MonoBehaviourPunCallbacks
     void Start()
     {
 
+
+
+
+
     PhotonNetwork.SetPlayerCustomProperties(ht);
 
 
-    ht.Add($"Player1 {0}번째 카드",$"Drow {0}");
-
-
-    ht.Add($"Player2 {0}번째 카드",$"Drow {0}");
-    ht.Add($"Player3 {0}번째 카드",$"Drow {0}");
-    ht.Add($"Player4 {0}번째 카드",$"Drow {0}");
 
 
 
@@ -270,7 +268,7 @@ public class TouchMgr : MonoBehaviourPunCallbacks
 
 
                         PlayerPoint += 5;
-                        Debug.Log(PlayerPoint);
+                        OnCardOpen();
 
 
 
@@ -291,14 +289,21 @@ public class TouchMgr : MonoBehaviourPunCallbacks
 
 
 
-    
-
 
 
 
     }
 
 
+
+    public void OnCardOpen()
+    {
+
+        ht.Add("Score",(int)PlayerPoint);
+        PhotonNetwork.SetPlayerCustomProperties(ht);
+        Debug.Log($"{ht["Score"]}");
+
+    }
 
 
 
@@ -321,6 +326,15 @@ public class TouchMgr : MonoBehaviourPunCallbacks
 
 // // 커런트 룸 플레이어 배열, 커스텀 프로퍼티, 포인트값만, foreach
 // // PhotonNetwork.CurrentRoom.Player
+
+
+
+
+
+
+
+
+
 
 
 
