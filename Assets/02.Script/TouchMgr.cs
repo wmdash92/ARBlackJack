@@ -291,9 +291,12 @@ public class TouchMgr : MonoBehaviourPunCallbacks
 
     
 
-        ht.Add("Score",(int)PlayerPoint);
+        // ht.Add("Score",(int)PlayerPoint); // 스코어가 겹치는 버그 발생
+        ht["Score"] = (int)PlayerPoint; 
+
         PhotonNetwork.SetPlayerCustomProperties(ht);
         Debug.Log($"{ht["Score"]}");
+
     }
 
 

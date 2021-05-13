@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
+    
+
+
 
     void Start()
     {
@@ -58,10 +61,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log($"now room player is = {PhotonNetwork.PlayerList.Count()}");
 
 
-
-        
-
-
         Debug.Log($" {PhotonNetwork.CurrentRoom.Players.Values}");
 
 
@@ -70,9 +69,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log($"hello {playerList}");
         
         
-
-        
-
         
 
         int maxScore = -1;
@@ -81,7 +77,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         foreach (var player in playerList)
         {
             Hashtable htTemp = player.CustomProperties;
-            Debug.Log($"Properties is {htTemp}");
+            Debug.Log($"Properties is {htTemp["Score"]}");
             
             if(maxScore < (int)htTemp["Score"])
             {
@@ -90,7 +86,6 @@ public class GameManager : MonoBehaviourPunCallbacks
                 WinCake();
             }
         }
-        
 
             Debug.Log($" {winPlayer} is Win");
             
@@ -107,7 +102,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         public void WinCake()
         {
             Win.Invoke();
-
         }
 
 
