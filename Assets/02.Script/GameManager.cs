@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Linq;
@@ -61,13 +62,16 @@ public class GameManager : MonoBehaviourPunCallbacks
         
 
 
-        Debug.Log($"player  {PhotonNetwork.CurrentRoom.Players.Values} hello s");
+        Debug.Log($" {PhotonNetwork.CurrentRoom.Players.Values}");
 
 
 
         List<Player> playerList = PhotonNetwork.CurrentRoom.Players.Values.ToList<Player>();
         Debug.Log($"hello {playerList}");
+        
+        
 
+        
 
         
 
@@ -77,18 +81,44 @@ public class GameManager : MonoBehaviourPunCallbacks
         foreach (var player in playerList)
         {
             Hashtable htTemp = player.CustomProperties;
+            Debug.Log($"Properties is {htTemp}");
             
             if(maxScore < (int)htTemp["Score"])
             {
                 maxScore = (int)htTemp["Score"];
                 winPlayer = player;
+                WinCake();
             }
         }
         
 
-            Debug.Log($"win {winPlayer}");
+            Debug.Log($" {winPlayer} is Win");
+            
+
 
     }
+
+
+
+
+        public UnityEvent Win;
+
+
+        public void WinCake()
+        {
+            Win.Invoke();
+
+        }
+
+
+
+        public void WinScene()
+        {
+            PhotonNetwork.LoadLevel("EndScene");
+
+        }
+
+
 
 
 
@@ -102,6 +132,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
             Debug.Log($"target = {targetPlayer}, change = {changedProps}");
 
+        
 
         }
 
