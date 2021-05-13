@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
 using Photon.Pun;
 using Photon.Realtime;
+
 using System.Linq;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
@@ -18,7 +20,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     
 
     public Hashtable ht = new Hashtable();
-
+    PhotonView pv;
+    
 
 
     
@@ -27,7 +30,22 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        
+            if(PhotonNetwork.IsMasterClient)
+            {
+                Debug.Log("you are MASTER");
+            }
+            else
+            {
+                Debug.Log("you are not MASTER");
+            }
+
+
+
+        pv = GetComponent<PhotonView>();
+
+
+
+
     }
 
 
@@ -56,42 +74,107 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
-        Debug.Log($"current player is = {PhotonNetwork.CountOfPlayers}");
+            Debug.Log($"current player is = {PhotonNetwork.CountOfPlayers}");
 
-        Debug.Log($"now room player is = {PhotonNetwork.PlayerList.Count()}");
+            Debug.Log($"now room player is = {PhotonNetwork.PlayerList.Count()}");
 
 
-        Debug.Log($" {PhotonNetwork.CurrentRoom.Players.Values}");
+            Debug.Log($" {PhotonNetwork.CurrentRoom.Players.Values}");
 
 
 
         List<Player> playerList = PhotonNetwork.CurrentRoom.Players.Values.ToList<Player>();
         Debug.Log($"hello {playerList}");
         
-        
-        
-
         int maxScore = -1;
         Player winPlayer = null;
 
-        foreach (var player in playerList)
-        {
-            Hashtable htTemp = player.CustomProperties;
-            Debug.Log($"Properties is {htTemp["Score"]}");
-            
-            if(maxScore < (int)htTemp["Score"])
+            foreach (var player in playerList)
             {
-                maxScore = (int)htTemp["Score"];
-                winPlayer = player;
-                WinCake();
+                Hashtable htTemp = player.CustomProperties;
+                Debug.Log($"your score is now {htTemp["Score"]}");
+                
+                if(maxScore < (int)htTemp["Score"])
+                {
+                    maxScore = (int)htTemp["Score"];
+                    winPlayer = player;
+                
+                }
             }
-        }
 
-            Debug.Log($" {winPlayer} is Win");
-            
+                Debug.Log($"player {winPlayer} is High Score");
+                
+                    Debug.Log($"playerList  = {playerList[0]}");
+                    Debug.Log($"winplayer Actornumber  = {winPlayer.ActorNumber}");
+
+
+
+
+                    Debug.Log($"owner Actornumber  = {pv.Owner.ActorNumber}");
 
 
     }
+
+
+
+
+
+
+
+        public void OnGameEndButton()
+        {
+
+            if(PhotonNetwork.IsMasterClient)
+
+            {
+
+                List<Player> playerList = PhotonNetwork.CurrentRoom.Players.Values.ToList<Player>();
+
+                Debug.Log($"hello {playerList}");
+                
+                int maxScore = -1;
+                Player winPlayer = null;
+
+                    foreach (var player in playerList)
+                    {
+                        Hashtable htTemp = player.CustomProperties;
+                        Debug.Log($"your score is now {htTemp["Score"]}");
+                        
+                        if(maxScore < (int)htTemp["Score"])
+                        {
+                            maxScore = (int)htTemp["Score"];
+                            winPlayer = player;
+                        }
+                    }
+
+                    Debug.Log($"player {winPlayer} is Win");
+
+                    pv.RPC("EndEvent", RpcTarget.All, winPlayer.ActorNumber);
+
+                    EndEvent(winPlayer.ActorNumber);
+
+            }
+        }
+
+
+
+
+
+        [PunRPC]
+        void EndEvent(int winnerId)
+        {
+
+
+            if(winnerId == pv.Owner.ActorNumber)
+
+                {
+                    PhotonNetwork.LoadLevel("EndScene");
+                }
+            // else{
+
+            // }
+        }
+
 
 
 
@@ -129,6 +212,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         
 
         }
+
+
+
+
+
+
+
 
 
 }

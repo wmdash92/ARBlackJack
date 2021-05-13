@@ -49,7 +49,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     void Start()
     {
         userId = PlayerPrefs.GetString("USER_ID", $"USER_{Random.Range(0,100) :00}");
-        
+        // userIdText.text = userId;
+        PhotonNetwork.NickName = userId;
+
+
     }
 
 
@@ -121,9 +124,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void OnLoginClick()
     {
 
+        PhotonNetwork.JoinRandomRoom();
         PhotonNetwork.CreateRoom(roomNameText.text);
 
-        PhotonNetwork.JoinRandomRoom();
         Debug.Log("랜덤룸 접속");
 
     }
