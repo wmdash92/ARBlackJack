@@ -51,13 +51,7 @@ public class SpadeCard : MonoBehaviour
 
 
 
-            if (Input.GetMouseButtonDown(0))
-            {
-            Debug.Log("touch");
-            
-            Card.SetActive(false);
 
-        }
 
 
     }
