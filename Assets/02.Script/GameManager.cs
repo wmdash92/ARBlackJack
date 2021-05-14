@@ -75,11 +75,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
             Debug.Log($"current player is = {PhotonNetwork.CountOfPlayers}");
-
             Debug.Log($"now room player is = {PhotonNetwork.PlayerList.Count()}");
 
-
-            Debug.Log($" {PhotonNetwork.CurrentRoom.Players.Values}");
 
 
 
@@ -151,7 +148,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                     pv.RPC("EndEvent", RpcTarget.All, winPlayer.ActorNumber);
 
-                    EndEvent(winPlayer.ActorNumber);
+                    // EndEvent(winPlayer.ActorNumber);
 
             }
         }
@@ -191,7 +188,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         public void WinScene()
         {
-            PhotonNetwork.LoadLevel("EndScene");
+            // PhotonNetwork.LoadLevel("EndScene");
 
         }
 
