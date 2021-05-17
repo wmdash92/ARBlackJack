@@ -295,7 +295,7 @@ public class TouchMgr : MonoBehaviourPunCallbacks
         ht["Score"] = (int)PlayerPoint; 
 
         PhotonNetwork.SetPlayerCustomProperties(ht);
-        Debug.Log($"{ht["Score"]}");
+        Debug.Log($"plyaer score is {ht["Score"]}");
 
     }
 

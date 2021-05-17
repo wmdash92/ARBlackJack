@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
-
+//cake ready
 
 
     void Update()
