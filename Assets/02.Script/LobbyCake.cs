@@ -27,7 +27,7 @@ public class LobbyCake : MonoBehaviour
 
     public void ThrowCakeHigh()
     {
-        rb.AddRelativeForce(Vector3.up * 300.0f);
+        rb.AddRelativeForce(Vector3.up * 350.0f);
         Instantiate(throwCakeEffect, transform.position, transform.rotation);
 
     }
