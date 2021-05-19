@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="CakeJack_1" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_13" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_12" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_11" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_10" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_09" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_08" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_07" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_06" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_05" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_04" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_03" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_02" size="1.000000 1.000000" />
+    <ImageTarget name="CakeJack_01" size="1.000000 1.000000" />
   </Tracking>
 </QCARConfig>

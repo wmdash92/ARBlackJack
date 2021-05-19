@@ -103,13 +103,12 @@ public class TouchMgr : MonoBehaviourPunCallbacks
         SpadeCardCtrl();
 
 
-
-    }
-
-    public void CardResult()
-    {
         PlayerPoint = APoint + NotAPoint;
+
     }
+
+
+
 
 
     void SpadeCardCtrl()
@@ -141,7 +140,7 @@ public class TouchMgr : MonoBehaviourPunCallbacks
                         Destroy(FaEffect, 5.0f);
                         Destroy(PlEffect, 0.6f);
 
-                        if(NotAPoint < 11)
+                        if(PlayerPoint < 11)
                         {
                             APoint += 11;
                         }
