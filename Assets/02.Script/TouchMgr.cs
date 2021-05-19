@@ -23,12 +23,15 @@ public class TouchMgr : MonoBehaviourPunCallbacks
     private PhotonView pv;
 
 
+    public Transform[] spades;
+    public Transform[] diamonds;
+    public Transform[] hearts;
+    public Transform[] clovers;
 
 #region SpadeCardTr
 //--------------------------------
 
 
-    public Transform[] spades;
     
     public Transform Spade01Tr;
     public Transform Spade02Tr;
@@ -48,6 +51,11 @@ public class TouchMgr : MonoBehaviourPunCallbacks
 //----------------------------------------
 
     public int PlayerPoint;
+    public int APoint;
+    public int NotAPoint;
+
+
+
 
 
 
@@ -91,20 +99,62 @@ public class TouchMgr : MonoBehaviourPunCallbacks
 
 
 
+
+        SpadeCardCtrl();
+
+
+
+    }
+
+    public void CardResult()
+    {
+        PlayerPoint = APoint + NotAPoint;
+    }
+
+
+    void SpadeCardCtrl()
+    {
+
     #region SpadeCardCtrl
+
 
         if (Physics.Raycast(ray, out hit, 10.0f, 1 << 6))
         {
 
-            Debug.Log("hello");
-
             if (Input.GetMouseButtonDown(0))
             {
-            Debug.Log("touch");
-            GameObject obj = Instantiate(FairyEffect, Spade02Tr.transform.position, Spade02Tr.transform.rotation);
-            Destroy(obj, 3.0f);
-            }
 
+                GameObject BackColor_Black_Spade05 = GameObject.Find("BackColor_Black_Spade05");
+                BackColor_Black_Spade05.SetActive(false);
+
+
+                GameObject Spade05 = GameObject.Find("Sun_Spade05");
+                var cards = Spade05.GetComponentsInChildren<Transform>(true);
+                foreach (var card in cards)
+                {
+                    if (card.gameObject.name == "Spade05")
+                    {
+                        card.gameObject.SetActive(true);
+
+                        GameObject FaEffect = Instantiate(FairyEffect, Spade05Tr.transform.position, Spade05Tr.transform.rotation);
+                        GameObject PlEffect = Instantiate(PlasEffect, Spade05Tr.transform.position, Spade05Tr.transform.rotation);
+                        Destroy(FaEffect, 5.0f);
+                        Destroy(PlEffect, 0.6f);
+
+                        if(NotAPoint < 11)
+                        {
+                            APoint += 11;
+                        }
+                        else
+                        {
+                            APoint +=1;
+                        }
+                        OnCardOpen();
+
+                        break;
+                    }
+                }
+            }
 
         }
 
@@ -186,7 +236,7 @@ public class TouchMgr : MonoBehaviourPunCallbacks
                         Destroy(FaEffect, 5.0f);
                         Destroy(PlEffect, 0.6f);
 
-                        PlayerPoint += 3;
+                        NotAPoint += 3;
                         OnCardOpen();
 
                         break;
@@ -222,7 +272,7 @@ public class TouchMgr : MonoBehaviourPunCallbacks
                         Destroy(PlEffect, 0.6f);
 
 
-                        PlayerPoint += 4;
+                        NotAPoint += 4;
                         OnCardOpen();
 
 
@@ -259,28 +309,23 @@ public class TouchMgr : MonoBehaviourPunCallbacks
                         Destroy(FaEffect, 5.0f);
                         Destroy(PlEffect, 0.6f);
 
-
-
-                        PlayerPoint += 5;
+                        NotAPoint += 5;
                         OnCardOpen();
-
-                    
-                    
-
 
                         break;
                     }
                 }
-
-
             }
+
         }
 
+
+
+
+
+
+
 #endregion
-
-
-
-
 
     }
 

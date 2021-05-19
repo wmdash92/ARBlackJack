@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<VuforiaUnityInfo>
+    <TargetSet toolVersion="" version="6.0"><VuMark name="CakeJack" previewImage="a46b9ebd4c5f42cea6f513475f411c33_preview.png" targetId="a46b9ebd4c5f42cea6f513475f411c33" version="9.0">
+            <Shape bbox2D="0 0 557.828 557.828" origin="278.914 278.914" />
+            <Code IDlength="6" IDtype="numeric" MaxID="52" />
+        </VuMark>
+    </TargetSet>
+</VuforiaUnityInfo>

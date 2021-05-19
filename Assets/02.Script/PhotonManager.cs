@@ -88,7 +88,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         RoomOptions ro = new RoomOptions();
         ro.IsOpen =true;
         ro.IsVisible = true;
-        ro.MaxPlayers = 4;
+        ro.MaxPlayers = 10;
 
 
         if (string.IsNullOrEmpty(roomNameText.text))

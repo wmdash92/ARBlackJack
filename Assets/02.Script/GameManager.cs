@@ -81,7 +81,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
         List<Player> playerList = PhotonNetwork.CurrentRoom.Players.Values.ToList<Player>();
-        Debug.Log($"hello {playerList}");
         
         int maxScore = -1;
         Player winPlayer = null;
@@ -101,12 +100,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 Debug.Log($"player {winPlayer} is High Score");
                 
-                    Debug.Log($"playerList  = {playerList[0]}");
+                    // Debug.Log($"playerList  = {playerList[0]}");
                     Debug.Log($"winplayer Actornumber  = {winPlayer.ActorNumber}");
-
-
-
-
                     Debug.Log($"owner Actornumber  = {pv.Owner.ActorNumber}");
 
 
@@ -117,7 +112,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
 
-
+        
         public void OnGameEndButton()
         {
 
@@ -126,8 +121,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
 
                 List<Player> playerList = PhotonNetwork.CurrentRoom.Players.Values.ToList<Player>();
-
-                Debug.Log($"hello {playerList}");
                 
                 int maxScore = -1;
                 Player winPlayer = null;
@@ -135,7 +128,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                     foreach (var player in playerList)
                     {
                         Hashtable htTemp = player.CustomProperties;
-                        Debug.Log($"your score is now {htTemp["Score"]}");
+                        // Debug.Log($"your score is now {htTemp["Score"]}");
                         
                         if(maxScore < (int)htTemp["Score"])
                         {
@@ -163,13 +156,16 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
             if(winnerId == pv.Owner.ActorNumber)
-
                 {
                     PhotonNetwork.LoadLevel("EndScene");
                 }
-            // else{
 
-            // }
+                else
+                
+                {
+                    PhotonNetwork.LoadLevel("LoseScene");
+
+                }
         }
 
 
